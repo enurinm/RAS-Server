@@ -1,0 +1,6 @@
+# swaggerdoc
+# http://localhost:8080/swagger-ui.html
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
