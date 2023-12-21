@@ -1,6 +1,52 @@
-# swaggerdoc
-# http://localhost:8080/swagger-ui.html
+server:
+  servlet:
+    context-path: /
+  port: 8080
+
 springdoc:
+  version: '@springdoc.version@'
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  api-docs:
+    path: /api-docs
+    version: openapi_3_1
+    groups:
+      enabled: true
   swagger-ui:
-    path: /swagger-ui.html
-    enabled: true
+    # swagger-ui 접근 경로. default 값은 /swagger-ui.html이다.
+#    path:
+    use-root-path: true
+    # 태그 정렬 순서.
+    # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+    # method: OpenAPI specification file에 원하는 태그 정렬 방식 직접 기재
+    tags-sorter: alpha
+    # 컨트롤러 정렬 순서.
+    # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+    # method는 delete - get - patch - post - put 순으로 정렬된다.
+    operations-sorter: alpha
+    # 각 API의 그룹 표시 순서
+    # path, query, body, response 순으로 출력
+    groups-order: DESC
+    # swagger-ui default url인 petstore html의 비활성화 설정
+    disable-swagger-default-url: true
+    # swagger-ui에서 try 했을 때 request duration을 알려주는 설정
+    display-request-duration: true
+  # Spring Actuator의 endpoint까지 보여줄 것인지?
+  show-actuator: true
+  # 해당 패턴에 매칭되는 controller만 swagger-ui에 노출한다.
+  paths-to-match:
+    - /api/**
+
+# swaggerdoc
+# http://localhost:8080/
+#springdoc:
+#  packagesToScan: com.ras.controller
+#  pathsToMatch: /api
+#  swagger-ui:
+#    path: /
+#    enabled: true
+#    disable-swagger-default-url: true
+#    display-request-duration: true
+#  api-docs:
+#    path: /api-docs
+
