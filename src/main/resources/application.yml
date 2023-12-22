@@ -3,6 +3,12 @@ server:
     context-path: /
   port: 8080
 
+#spring:
+#  security:
+#    user:
+#      name: user
+#      password: 0000
+
 springdoc:
   version: '@springdoc.version@'
   default-consumes-media-type: application/json;charset=UTF-8
