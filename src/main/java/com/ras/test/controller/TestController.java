@@ -1,6 +1,7 @@
 package com.ras.test.controller;
 
 import com.ras.test.dao.TestDAO;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -16,6 +17,7 @@ public class TestController {
 //    @Autowired
 //    private TestDAO testDAO;
 
+    @Operation(summary = "테스트 컨트롤러", description = "string을 반환하는 테스트 컨트롤러", tags = { "Test" })
     @RequestMapping(value = "/example", method = RequestMethod.GET)
     public TestDAO TestRequest() {
 

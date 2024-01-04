@@ -1,4 +1,4 @@
-package com.ras.test;
+package com.ras.main;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +16,7 @@ public class RasServerApplication {
     @Bean
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
-                .group("test-api")
+                .group("api")
                 .pathsToMatch("/api/**")
                 .build();
     }
