@@ -13,12 +13,4 @@ public class RasServerApplication {
         SpringApplication.run(RasServerApplication.class, args);
     }
 
-    @Bean
-    public GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder()
-                .group("api")
-                .pathsToMatch("/api/**")
-                .build();
-    }
-
 }
