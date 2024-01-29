@@ -10,9 +10,9 @@ spring:
       password: admin0000
   datasource:
     driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite:RAS.db
-#    username: example123
-#    password: example456
+    url: jdbc:sqlite:RASTest.db
+  #    username: example123
+  #    password: example456
   jpa:
     database-platform: org.hibernate.community.dialect.SQLiteDialect
     hibernate:
@@ -32,7 +32,7 @@ springdoc:
       enabled: true
   swagger-ui:
     # swagger-ui 접근 경로. default 값은 /swagger-ui.html이다.
-#    path:
+    #    path:
     use-root-path: true
     # 태그 정렬 순서.
     # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
