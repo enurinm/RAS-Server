@@ -1,4 +1,4 @@
-package com.ras.main.config;
+package com.ras.config;
 
 import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;

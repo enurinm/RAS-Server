@@ -1,6 +1,5 @@
-package com.ras.main;
+package com.ras;
 
-import com.ras.test.RasTestServerApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

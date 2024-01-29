@@ -1,4 +1,4 @@
-package com.ras.main.config;
+package com.ras.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
