@@ -10,7 +10,7 @@ spring:
       password: admin0000
   datasource:
     driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite:RASTest.db
+    url: jdbc:sqlite:RAS-Server/src/test/resources/RASTest.db
   #    username: example123
   #    password: example456
   jpa:
