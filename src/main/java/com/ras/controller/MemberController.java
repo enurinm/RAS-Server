@@ -22,18 +22,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
     private final MemberService memberService;
 
-    @Operation(summary = "로그인", description = "로그인")
+    @Operation(summary = "로그인", description = "로그인", tags = {"Login", "Member"})
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public MemberDao login (
+    public void login (
             @Parameter(name="id" ,description = "아이디") @RequestParam(required = true) String id
             , @Parameter(name="pw" ,description = "비밀번호") @RequestParam(required = true) String pw) {
 
         MemberDao returnDao = memberService.login(id, pw);
 
-        return returnDao;
+//        return returnDao;
     }
 
-    @Operation(summary = "로그아웃", description = "로그아웃")
+    @Operation(summary = "로그아웃", description = "로그아웃", tags = {"Login", "Member"})
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public void logout() { }
 }
