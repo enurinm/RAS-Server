@@ -30,7 +30,11 @@ public class SecurityConfig {
                                 .authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
+                /*.formLogin(login -> login
+                        .loginProcessingUrl("/api/member/login")
+                        .usernameParameter("id")
+                        .passwordParameter("pw")
+                )*/
                 .cors(Customizer.withDefaults())
                 .csrf(Customizer.withDefaults())
                 .build();
