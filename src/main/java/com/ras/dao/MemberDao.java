@@ -1,12 +1,10 @@
 package com.ras.dao;
 
-import lombok.Data;
+import com.ras.data.Member;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class MemberDao {
-    private String id;
-    private String pw;
-    private String name;
-    private String contact;
-    private Integer memberCd;
+@Getter
+@Setter
+public class MemberDao extends Member {
 }
