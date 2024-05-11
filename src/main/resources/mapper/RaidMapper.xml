@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ras.mapper.RaidMapper">
+    <select id="selectRaidList" resultType="com.ras.dao.RaidDao">
+        select
+            id
+             , name
+             , img
+             , round_yn as roundYn
+             , auto_yn as autoYn
+             , auto_action_yn as autoActionYn
+             , auto_time_yn as autoTimeYn
+             , auto_time as autoTime
+             , friend_first_yn as friendFirstYn
+             , base_stat_id as baseStatId
+             , sort_method as sortMethod
+             , raid_cd as raidCd
+             , raid_round as raidRound
+             , raid_turn as raidTurn
+             , participant_friend_all_yn as participantFriendAllYn
+             , participant_friend as participantFriend
+             , participant_enemy_all_yn as participantEnemyAllYn
+             , participant_enemy as participantEnemy
+             , raid_main_type as raidMainType
+             , raid_main_img as raidMainImg
+             , raid_main_txt as raidMainTxt
+        from raid
+    </select>
+</mapper>
