@@ -7,7 +7,7 @@
             id
             , name
             , contact
-            , member_cd as memberCd
+            , member_cd
         from member
         <where>
             id = #{id}

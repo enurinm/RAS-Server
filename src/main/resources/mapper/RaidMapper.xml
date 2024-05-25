@@ -7,24 +7,24 @@
             id
              , name
              , img
-             , round_yn as roundYn
-             , auto_yn as autoYn
-             , auto_action_yn as autoActionYn
-             , auto_time_yn as autoTimeYn
-             , auto_time as autoTime
-             , friend_first_yn as friendFirstYn
-             , base_stat_id as baseStatId
-             , sort_method as sortMethod
-             , raid_cd as raidCd
-             , raid_round as raidRound
-             , raid_turn as raidTurn
-             , participant_friend_all_yn as participantFriendAllYn
-             , participant_friend as participantFriend
-             , participant_enemy_all_yn as participantEnemyAllYn
-             , participant_enemy as participantEnemy
-             , raid_main_type as raidMainType
-             , raid_main_img as raidMainImg
-             , raid_main_txt as raidMainTxt
+             , round_yn
+             , auto_yn
+             , auto_action_yn
+             , auto_time_yn
+             , auto_time
+             , friend_first_yn
+             , base_stat_id
+             , sort_method
+             , raid_cd
+             , raid_round
+             , raid_turn
+             , participant_friend_all_yn
+             , participant_friend
+             , participant_enemy_all_yn
+             , participant_enemy
+             , raid_main_type
+             , raid_main_img
+             , raid_main_txt
         from raid
     </select>
 </mapper>
