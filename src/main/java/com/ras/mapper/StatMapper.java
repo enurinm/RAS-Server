@@ -13,5 +13,7 @@ public interface StatMapper {
 
     StatDao selectStat(StatDao param);
 
-    void registStat(StatDao param);
+    void insertStat(StatDao param);
+
+    void updateStat(StatDao param);
 }

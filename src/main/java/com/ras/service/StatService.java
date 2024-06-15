@@ -31,11 +31,20 @@ public class StatService {
     @Transactional
     public void registStat(StatDao inputParam) {
         try {
-            statMapper.registStat(inputParam);
+            statMapper.insertStat(inputParam);
         } catch (Exception e) {
             throw new RuntimeException("에러입니다.");
         }
+        return;
+    }
 
+    @Transactional
+    public void saveStat(StatDao inputParam) { // 여기서부터 개발
+        try {
+            statMapper.updateStat(inputParam);
+        } catch (Exception e) {
+            throw new RuntimeException("에러입니다.");
+        }
         return;
     }
 }

@@ -20,8 +20,8 @@
         </where>
     </select>
 
-    <insert id="registStat" parameterType="com.ras.dao.StatDao">
-        insert into /* StatMapper.registStat :: 스탯 등록 */
+    <insert id="insertStat" parameterType="com.ras.dao.StatDao">
+        insert into /* StatMapper.insertStat :: 스탯 등록 */
             stat (id, name, txt, show_yn, stat_type, min_num, max_num, default_num, unit, calc_type, base_stat_id, calc_txt)
         values (
             #{id},
@@ -38,4 +38,8 @@
             #{calcTxt}
         )
     </insert>
+
+    <update id="updateStat" parameterType="com.ras.dao.StatDao">
+
+    </update>
 </mapper>

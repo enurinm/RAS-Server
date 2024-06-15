@@ -51,4 +51,11 @@ public class StatController {
         statService.registStat(stat);
         return;
     }
+
+    @Operation(summary = "스탯 수정", description = "스탯 수정", tags = {"Stat"})
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public void saveStat(@RequestBody StatDao stat) throws Exception{
+        statService.registStat(stat);
+        return;
+    }
 }
