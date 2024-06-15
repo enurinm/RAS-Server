@@ -12,4 +12,6 @@ public interface StatMapper {
     List<StatDao> selectStatList(StatDao param);
 
     StatDao selectStat(StatDao param);
+
+    void registStat(StatDao param);
 }

@@ -8,10 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class StatController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<StatDao> searchStatList(
             @Parameter(name="statType" ,description = "스탯 종류 (0: 유동 스탯(기본 스탯)/1: 고정 스탯(기본 스탯)/2: 연계 스탯)")
-            @RequestParam(required = false) Integer statType) {
+            @RequestParam(required = false) Integer statType) throws Exception{
         StatDao inputParam = new StatDao();
         inputParam.setStatType(statType);
 
@@ -40,7 +37,7 @@ public class StatController {
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public StatDao searchStat(
             @Parameter(name="id" ,description = "스탯 id")
-            @RequestParam(required = true) Integer id) {
+            @RequestParam(required = true) Integer id) throws Exception{
         StatDao inputParam = new StatDao();
         inputParam.setId(id);
 
@@ -50,11 +47,8 @@ public class StatController {
 
     @Operation(summary = "스탯 등록", description = "스탯 등록", tags = {"Stat"})
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
-    public StatDao registStat(
-            @Parameter(name="stat" ,description = "스탯 정보")
-            @RequestParam(required = false) StatDao stat) {
-
-        StatDao returnDao = statService.searchStat(stat);
-        return returnDao;
+    public void registStat(@RequestBody StatDao stat) throws Exception{
+        statService.registStat(stat);
+        return;
     }
 }

@@ -1,8 +1,10 @@
 package com.ras.data;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Stat {
     private Integer id;
     private String name;

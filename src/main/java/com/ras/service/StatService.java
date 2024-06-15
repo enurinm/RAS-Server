@@ -8,6 +8,7 @@ import com.ras.mapper.StatMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,5 +26,16 @@ public class StatService {
     public StatDao searchStat(StatDao inputParam) {
         StatDao returnDao = statMapper.selectStat(inputParam);
         return returnDao;
+    }
+
+    @Transactional
+    public void registStat(StatDao inputParam) {
+        try {
+            statMapper.registStat(inputParam);
+        } catch (Exception e) {
+            throw new RuntimeException("에러입니다.");
+        }
+
+        return;
     }
 }

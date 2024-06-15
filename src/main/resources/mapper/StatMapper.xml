@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ras.mapper.StatMapper">
     <select id="selectStatList" resultType="com.ras.dao.StatDao" parameterType="com.ras.dao.StatDao">
-        select *
+        select * /* StatMapper.selectStatList :: 스탯 리스트 조회 */
         from stat
         <where>
             <if test="statType != null">
@@ -13,10 +13,29 @@
     </select>
 
     <select id="selectStat" resultType="com.ras.dao.StatDao" parameterType="com.ras.dao.StatDao">
-        select *
+        select * /* StatMapper.selectStat :: 스탯 상세 조회 */
         from stat
         <where>
             id = #{id}
         </where>
     </select>
+
+    <insert id="registStat" parameterType="com.ras.dao.StatDao">
+        insert into /* StatMapper.registStat :: 스탯 등록 */
+            stat (id, name, txt, show_yn, stat_type, min_num, max_num, default_num, unit, calc_type, base_stat_id, calc_txt)
+        values (
+            #{id},
+            #{name},
+            #{txt},
+            #{showYn},
+            #{statType},
+            #{minNum},
+            #{maxNum},
+            #{defaultNum},
+            #{unit},
+            #{calcType},
+            #{baseStatId},
+            #{calcTxt}
+        )
+    </insert>
 </mapper>
