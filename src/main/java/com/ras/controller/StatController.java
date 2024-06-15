@@ -36,7 +36,7 @@ public class StatController {
         return returnDao;
     }
 
-    @Operation(summary = "스탯 조회", description = "스탯 조회", tags = {"Stat"})
+    @Operation(summary = "스탯 상세 조회", description = "스탯 상세 조회", tags = {"Stat"})
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public StatDao searchStat(
             @Parameter(name="id" ,description = "스탯 id")
