@@ -11,4 +11,12 @@
             </if>
         </where>
     </select>
+
+    <select id="selectStat" resultType="com.ras.dao.StatDao" parameterType="com.ras.dao.StatDao">
+        select *
+        from stat
+        <where>
+            id = #{id}
+        </where>
+    </select>
 </mapper>

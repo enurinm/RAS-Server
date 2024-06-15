@@ -21,4 +21,9 @@ public class StatService {
         List<StatDao> returnDao = statMapper.selectStatList(inputParam);
         return returnDao;
     }
+
+    public StatDao searchStat(StatDao inputParam) {
+        StatDao returnDao = statMapper.selectStat(inputParam);
+        return returnDao;
+    }
 }
