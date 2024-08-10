@@ -16,7 +16,7 @@ public class SkillEffect {
      * 2: 직접입력
      */
     private Integer effectType;
-    private Integer effectTypeNum;
+    private double effectTypeNum;
     private Integer effectTypeStat;
     private Integer effectTypeSkillCd1;
     private Integer effectTypeSkillCd2;

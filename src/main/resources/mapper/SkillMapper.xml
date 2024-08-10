@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ras.mapper.SkillMapper">
+    <select id="selectSkillList" resultType="com.ras.dao.SkillListDao" parameterType="com.ras.dao.SkillListDao">
+        select s.* /* SkillMapper.selectSkillList :: 스킬 리스트 조회 */
+        from skill s
+            inner join skill_effect se on s.id = se.skill_id
+        <where>
+            <if test="effectCd != null">
+                se.effect_cd = #{effectCd}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectSkillEffectList" resultType="com.ras.dao.SkillEffectDao" parameterType="com.ras.dao.SkillListDao">
+        select se.* /* SkillMapper.selectSkillEffectList :: 스킬 효과 리스트 조회 */
+        , (select c.code_name from code c where c.type = 3 and c.code = se.effect_cd) as effect_name
+        from skill_effect se
+        <where>
+            se.skill_id = #{skillId}
+        </where>
+    </select>
+
+    <select id="selectSkillTriggerList" resultType="com.ras.dao.SkillTriggerDao" parameterType="com.ras.dao.SkillListDao">
+        select st.* /* SkillMapper.selectSkillTriggerList :: 스킬 발동조건 리스트 조회 */
+        , (select c.code_name from code c where c.type = 5 and c.code = st.trigger_type_cd) as trigger_name
+        from skill_trigger st
+        <where>
+            st.skill_id = #{skillId}
+        </where>
+    </select>
+</mapper>

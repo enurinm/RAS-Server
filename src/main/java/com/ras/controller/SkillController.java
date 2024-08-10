@@ -1,6 +1,7 @@
 package com.ras.controller;
 
 import com.ras.dao.SkillDao;
+import com.ras.dao.SkillListDao;
 import com.ras.service.SkillService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -10,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -24,13 +24,13 @@ public class SkillController {
 
     @Operation(summary = "스킬 목록 리스트", description = "스킬 목록 리스트", tags = {"Skill"})
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<SkillDao> searchSkillList(
-            @Parameter(name="statType" ,description = "스킬 종류 (0: 유동 스킬(기본 스킬)/1: 고정 스킬(기본 스킬)/2: 연계 스킬)")
-            @RequestParam(required = false) Integer statType) throws Exception{
-        List<SkillDao> returnDao = new ArrayList<>();
-//        inputParam.setSkillType(statType);
-//
-//        List<SkillDao> returnDao = statService.searchSkillList(inputParam);
+    public List<SkillListDao> searchSkillList(
+            @Parameter(name="effectCd" ,description = "스킬 종류")
+            @RequestParam(required = false) Integer effectCd) throws Exception{
+        SkillListDao inputParam = new SkillListDao();
+        inputParam.setEffectCd(effectCd);
+
+        List<SkillListDao> returnDao = skillService.searchSkillList(inputParam);
         return returnDao;
     }
 
