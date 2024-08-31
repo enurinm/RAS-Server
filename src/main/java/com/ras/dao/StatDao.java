@@ -7,6 +7,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class StatDao extends Stat {
+    private String baseStatName;
 }

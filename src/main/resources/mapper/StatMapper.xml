@@ -3,8 +3,9 @@
 
 <mapper namespace="com.ras.mapper.StatMapper">
     <select id="selectStatList" resultType="com.ras.dao.StatDao" parameterType="com.ras.dao.StatDao">
-        select * /* StatMapper.selectStatList :: 스탯 리스트 조회 */
-        from stat
+        select a.* /* StatMapper.selectStatList :: 스탯 리스트 조회 */
+            , (select b.NAME from stat b where a.BASE_STAT_ID = b.ID) as base_stat_name
+        from stat a
         <where>
             <if test="statType != null">
                 stat_type = #{statType}
