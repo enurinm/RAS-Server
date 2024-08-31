@@ -26,19 +26,47 @@ public class SkillService {
 
             // 발동조건 조회
             List<SkillTriggerDao> triggerList = skillMapper.selectSkillTriggerList(item);
-            // for
-                // 발동조건 세팅
-                // if 소모 : new codename, add
-                // else : string name += name
-            // add codename 발동
+            CodeName trigger = new CodeName();
+            String triggerVal = "";
+            for(SkillTriggerDao tItem: triggerList) {
+                if(tItem.getTriggerTypeCd() == 53) {
+                    // 시전자 스탯 값 소모일 경우 신규 추가
+                    CodeName use = new CodeName();
+                    use.setKey("소모");
+                    use.setValue(tItem.getTriggerNum()+"");
+                    triggerEffectList.add(use);
+                } else {
+                    // 소모 아닐 경우: 단순 이름 추가
+                    triggerVal += tItem.getTriggerName() + " ";
+                }
+            }
+
+            // 발동조건 세팅
+            if(triggerVal.length() > 0) {
+                trigger.setKey("발동");
+                trigger.setValue(triggerVal);
+
+                triggerEffectList.add(trigger);
+            }
 
 
             // 효과 조회
             List<SkillEffectDao> effectList = skillMapper.selectSkillEffectList(item);
-            // for
-                // if i = 0 : 지속시간 세팅
+            for(int i = 0; i < effectList.size(); i++) {
+                SkillEffectDao eItem = effectList.get(i);
+                if(i == 0) {
+                    // 지속시간 세팅
+                    CodeName time = new CodeName();
+                    time.setKey("지속");
+                    time.setValue(eItem.getEffectMaintainTime()+" 라운드");
+                    triggerEffectList.add(time);
+                }
+
                 // 효과 세팅
                 // case 종류 : key / val 세팅, add
+            }
+
+            item.setTriggerEffectList(triggerEffectList);
         }
 
         return returnDao;

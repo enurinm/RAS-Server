@@ -12,7 +12,7 @@ public class SkillTrigger {
     /**
      * 발동 조건 종류
      */
-    private Integer triggerType;
+    private Integer triggerTypeCd;
     private Integer triggerStatId;
 
     /**
