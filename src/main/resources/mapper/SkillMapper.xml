@@ -18,7 +18,7 @@
         , (select c.code_name from code c where c.type = 3 and c.code = se.effect_cd) as effect_name
         from skill_effect se
         <where>
-            se.skill_id = #{skillId}
+            se.skill_id = #{id}
         </where>
     </select>
 
@@ -27,7 +27,7 @@
         , (select c.code_name from code c where c.type = 5 and c.code = st.trigger_type_cd) as trigger_name
         from skill_trigger st
         <where>
-            st.skill_id = #{skillId}
+            st.skill_id = #{id}
         </where>
     </select>
 </mapper>
