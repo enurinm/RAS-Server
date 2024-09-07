@@ -1,8 +1,10 @@
 package com.ras.service;
 
-import com.ras.dao.*;
+import com.ras.dao.SkillDetailDao;
+import com.ras.dao.SkillEffectDao;
+import com.ras.dao.SkillListDao;
+import com.ras.dao.SkillTriggerDao;
 import com.ras.data.CodeName;
-import com.ras.data.SkillTrigger;
 import com.ras.mapper.SkillMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

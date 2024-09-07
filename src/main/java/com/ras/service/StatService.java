@@ -1,9 +1,6 @@
 package com.ras.service;
 
-import com.ras.dao.MemberDao;
-import com.ras.dao.RaidDao;
 import com.ras.dao.StatDao;
-import com.ras.mapper.RaidMapper;
 import com.ras.mapper.StatMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
