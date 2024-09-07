@@ -1,6 +1,7 @@
 package com.ras.controller;
 
 import com.ras.dao.SkillDao;
+import com.ras.dao.SkillDetailDao;
 import com.ras.dao.SkillListDao;
 import com.ras.service.SkillService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,13 +37,13 @@ public class SkillController {
 
     @Operation(summary = "스킬 상세 조회", description = "스킬 상세 조회", tags = {"Skill"})
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
-    public SkillDao searchSkill(
+    public SkillDetailDao searchSkill(
             @Parameter(name="id" ,description = "스킬 id")
             @RequestParam(required = true) Integer id) throws Exception{
-        SkillDao returnDao = new SkillDao();
-//        inputParam.setId(id);
-//
-//        SkillDao returnDao = statService.searchSkill(inputParam);
+        SkillListDao inputParam = new SkillListDao();
+        inputParam.setId(id);
+
+        SkillDetailDao returnDao = skillService.searchSkill(inputParam);
         return returnDao;
     }
 

@@ -18,18 +18,32 @@ import java.util.List;
 public class StatService {
     private final StatMapper statMapper;
 
-    public List<StatDao> searchStatList(StatDao inputParam) {
+    /**
+     * 스탯 목록 조회
+     * @param inputParam
+     * @return
+     */
+    public List<StatDao> searchStatList(StatDao inputParam) throws Exception{
         List<StatDao> returnDao = statMapper.selectStatList(inputParam);
         return returnDao;
     }
 
-    public StatDao searchStat(StatDao inputParam) {
+    /**
+     * 스탯 상세 조회
+     * @param inputParam
+     * @return
+     */
+    public StatDao searchStat(StatDao inputParam) throws Exception{
         StatDao returnDao = statMapper.selectStat(inputParam);
         return returnDao;
     }
 
+    /**
+     * 스탯 등록
+     * @param inputParam
+     */
     @Transactional
-    public void registStat(StatDao inputParam) {
+    public void registStat(StatDao inputParam) throws Exception{
         try {
             statMapper.insertStat(inputParam);
         } catch (Exception e) {
@@ -38,8 +52,12 @@ public class StatService {
         return;
     }
 
+    /**
+     * 스탯 수정
+     * @param inputParam
+     */
     @Transactional
-    public void saveStat(StatDao inputParam) { // 여기서부터 개발
+    public void saveStat(StatDao inputParam) throws Exception{ // 여기서부터 개발
         try {
             statMapper.updateStat(inputParam);
         } catch (Exception e) {

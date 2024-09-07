@@ -1,8 +1,6 @@
 package com.ras.service;
 
-import com.ras.dao.SkillEffectDao;
-import com.ras.dao.SkillListDao;
-import com.ras.dao.SkillTriggerDao;
+import com.ras.dao.*;
 import com.ras.data.CodeName;
 import com.ras.data.SkillTrigger;
 import com.ras.mapper.SkillMapper;
@@ -19,6 +17,12 @@ import java.util.List;
 public class SkillService {
     private final SkillMapper skillMapper;
 
+    /**
+     * 스킬 목록 조회
+     * @param inputParam
+     * @return
+     * @throws Exception
+     */
     public List<SkillListDao> searchSkillList(SkillListDao inputParam) throws Exception{
         List<SkillListDao> returnDao = skillMapper.selectSkillList(inputParam);
 
@@ -58,10 +62,8 @@ public class SkillService {
             if(triggerVal.length() > 0) {
                 trigger.setKey("발동");
                 trigger.setValue(triggerVal);
-
                 triggerEffectList.add(trigger);
             }
-
 
             // 효과 조회
             List<SkillEffectDao> effectList = skillMapper.selectSkillEffectList(item);
@@ -76,7 +78,6 @@ public class SkillService {
                 }
 
                 // 효과 세팅
-                // case 종류 : key / val 세팅, add
                 CodeName effect = new CodeName();
                 String value = "";
                 switch (eItem.getEffectType()) {
@@ -110,10 +111,24 @@ public class SkillService {
                 effect.setValue(value);
                 triggerEffectList.add(effect);
             }
-
             item.setTriggerEffectList(triggerEffectList);
         }
+        return returnDao;
+    }
+
+    /**
+     * 스킬 상세 조회
+     * @param inputParam
+     * @return
+     * @throws Exception
+     */
+    public SkillDetailDao searchSkill(SkillListDao inputParam) throws Exception{
+        SkillDetailDao returnDao = skillMapper.selectSkill(inputParam);
+
+        returnDao.setSkillEffectList(skillMapper.selectSkillEffectList(inputParam));
+        returnDao.setSkillTriggerList(skillMapper.selectSkillTriggerList(inputParam));
 
         return returnDao;
     }
+
 }
