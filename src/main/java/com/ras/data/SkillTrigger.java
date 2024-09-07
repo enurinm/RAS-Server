@@ -21,7 +21,7 @@ public class SkillTrigger {
      * 2, 3, 4: 스탯 값 조건
      */
     private Integer triggerNum;
-    private boolean triggerPersentYn; // 퍼센트/정수
-    private boolean triggerBeAbYn; // 이상/이하
-    private boolean triggerFirstDoYn; // 최초 발동 시 쿨타임 고려 여부
+    private Integer triggerPercentYn; // 퍼센트/정수
+    private Integer triggerBeAbYn; // 이상/이하
+    private Integer triggerFirstDoYn; // 최초 발동 시 쿨타임 고려 여부
 }

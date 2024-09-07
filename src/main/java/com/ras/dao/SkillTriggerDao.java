@@ -10,4 +10,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SkillTriggerDao extends SkillTrigger {
     private String triggerName;
+    private String triggerStatName;
 }

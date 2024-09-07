@@ -29,11 +29,23 @@ public class SkillService {
             CodeName trigger = new CodeName();
             String triggerVal = "";
             for(SkillTriggerDao tItem: triggerList) {
-                if(tItem.getTriggerTypeCd() == 53) {
+                if(tItem.getTriggerTypeCd() == null) {
+                    continue;
+                }
+
+                if(tItem.getTriggerTypeCd().equals(53)) {
                     // 시전자 스탯 값 소모일 경우 신규 추가
                     CodeName use = new CodeName();
+
+                    String name = tItem.getTriggerStatName() + " " + tItem.getTriggerNum();
+                    // 퍼센트표기 1: Y / 0: N
+                    if(tItem.getTriggerPercentYn() != null && tItem.getTriggerPercentYn().equals(1)) {
+                        name += "%";
+                    }
+
+                    // 소모 값 추가
                     use.setKey("소모");
-                    use.setValue(tItem.getTriggerNum()+"");
+                    use.setValue(name);
                     triggerEffectList.add(use);
                 } else {
                     // 소모 아닐 경우: 단순 이름 추가

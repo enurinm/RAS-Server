@@ -15,7 +15,10 @@
 
     <select id="selectSkillEffectList" resultType="com.ras.dao.SkillEffectDao" parameterType="com.ras.dao.SkillListDao">
         select se.* /* SkillMapper.selectSkillEffectList :: 스킬 효과 리스트 조회 */
-        , (select c.code_name from code c where c.type = 3 and c.code = se.effect_cd) as effect_name
+            , (select c.code_name
+                from code c
+                where c.type = 3 and c.code = se.effect_cd
+            ) as effect_name
         from skill_effect se
         <where>
             se.skill_id = #{id}
@@ -24,7 +27,14 @@
 
     <select id="selectSkillTriggerList" resultType="com.ras.dao.SkillTriggerDao" parameterType="com.ras.dao.SkillListDao">
         select st.* /* SkillMapper.selectSkillTriggerList :: 스킬 발동조건 리스트 조회 */
-        , (select c.code_name from code c where c.type = 5 and c.code = st.trigger_type_cd) as trigger_name
+            , ( select c.code_name
+                from code c
+                where c.type = 5 and c.code = st.trigger_type_cd
+            ) as trigger_name
+            , ( select name
+                from stat s
+                where st.trigger_stat_id = s.id
+            ) as trigger_stat_name
         from skill_trigger st
         <where>
             st.skill_id = #{id}
