@@ -9,5 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class SkillEffectDao extends SkillEffect {
-    private String EffectName;
+    private String effectName;
+    private String effectTypeStatName;
 }

@@ -19,6 +19,10 @@
                 from code c
                 where c.type = 3 and c.code = se.effect_cd
             ) as effect_name
+            , (select s.name
+               from stat s
+               where s.id = se.effect_type_stat
+            ) as effect_type_stat_name
         from skill_effect se
         <where>
             se.skill_id = #{id}

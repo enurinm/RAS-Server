@@ -4,6 +4,7 @@ import com.ras.dao.SkillEffectDao;
 import com.ras.dao.SkillListDao;
 import com.ras.dao.SkillTriggerDao;
 import com.ras.data.CodeName;
+import com.ras.data.SkillTrigger;
 import com.ras.mapper.SkillMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,15 +38,15 @@ public class SkillService {
                     // 시전자 스탯 값 소모일 경우 신규 추가
                     CodeName use = new CodeName();
 
-                    String name = tItem.getTriggerStatName() + " " + tItem.getTriggerNum();
+                    String value = tItem.getTriggerStatName() + " " + tItem.getTriggerNum();
                     // 퍼센트표기 1: Y / 0: N
                     if(tItem.getTriggerPercentYn() != null && tItem.getTriggerPercentYn().equals(1)) {
-                        name += "%";
+                        value += "%";
                     }
 
-                    // 소모 값 추가
+                    // 소모 값 세팅
                     use.setKey("소모");
-                    use.setValue(name);
+                    use.setValue(value);
                     triggerEffectList.add(use);
                 } else {
                     // 소모 아닐 경우: 단순 이름 추가
@@ -70,12 +71,44 @@ public class SkillService {
                     // 지속시간 세팅
                     CodeName time = new CodeName();
                     time.setKey("지속");
-                    time.setValue(eItem.getEffectMaintainTime()+" 라운드");
+                    time.setValue(eItem.getEffectMaintainTime() + "라운드");
                     triggerEffectList.add(time);
                 }
 
                 // 효과 세팅
                 // case 종류 : key / val 세팅, add
+                CodeName effect = new CodeName();
+                String value = "";
+                switch (eItem.getEffectType()) {
+                    // 버프제거/디버프제거
+                    case 361:
+                    case 362:
+                        value += eItem.getEffectTypeNum() + "개";
+                        break;
+
+                    // 도발
+                    case 37:
+                        break;
+
+                    default:
+                        switch (eItem.getEffectType()) {
+                            case 0: // 고정값
+                                value += eItem.getEffectTypeNum();
+                                break;
+                            case 1: // 배수
+                                value += eItem.getEffectTypeStatName() + "*" + eItem.getEffectTypeNum();
+                                break;
+                            case 2: // 직접입력
+                                value += eItem.getEffectTypeCalcTxt();
+                                break;
+                        }
+                        break;
+                }
+
+                // 효과 세팅
+                effect.setKey(eItem.getEffectName());
+                effect.setValue(value);
+                triggerEffectList.add(effect);
             }
 
             item.setTriggerEffectList(triggerEffectList);
