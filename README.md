@@ -11,6 +11,7 @@ Lombok
 JDBC
 JPA
 Mybatis 3.0.3
+sqlite-jdbc 3.45.0.0
 ```
 
 # Getting Started
