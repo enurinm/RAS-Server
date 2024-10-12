@@ -10,6 +10,9 @@
             <if test="statType != null">
                 stat_type = #{statType}
             </if>
+            <if test="name != null">
+                and a.name like ('%'||#{name}||'%')
+            </if>
         </where>
     </select>
 

@@ -11,7 +11,7 @@
         from member
         <where>
             id = #{id}
-            and pw=#{pw}
+            and pw = #{pw}
         </where>
     </select>
 </mapper>

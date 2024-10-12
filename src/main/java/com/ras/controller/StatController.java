@@ -25,9 +25,12 @@ public class StatController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<StatDao> searchStatList(
             @Parameter(name="statType" ,description = "스탯 종류 (0: 유동 스탯(기본 스탯)/1: 고정 스탯(기본 스탯)/2: 연계 스탯)")
-            @RequestParam(required = false) Integer statType) throws Exception{
+            @RequestParam(required = false) Integer statType
+            , @Parameter(name="name" ,description = "스탯 이름") @RequestParam(required = false) String name
+    ) throws Exception{
         StatDao inputParam = new StatDao();
         inputParam.setStatType(statType);
+        inputParam.setName(name);
 
         List<StatDao> returnDao = statService.searchStatList(inputParam);
         return returnDao;
