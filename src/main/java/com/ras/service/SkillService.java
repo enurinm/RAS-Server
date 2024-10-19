@@ -153,7 +153,7 @@ public class SkillService {
                 skillMapper.insertSkillEffect(effectDao);
             }
         } catch (Exception e) {
-            throw new RuntimeException("에러입니다.");
+            throw new RuntimeException(e.getMessage());
         }
         return;
     }
@@ -167,7 +167,7 @@ public class SkillService {
         try {
             skillMapper.updateSkill(inputParam);
         } catch (Exception e) {
-            throw new RuntimeException("에러입니다.");
+            throw new RuntimeException(e.getMessage());
         }
         return;
     }

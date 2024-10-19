@@ -51,6 +51,6 @@ public class SkillEffect {
      * 1: 조건부 지정(스탯)
      * 2: 직접 지정
      */
-    private Integer friendTargetingType;
+    private Integer friendTargetingTime;
     private String friendTxt;
 }

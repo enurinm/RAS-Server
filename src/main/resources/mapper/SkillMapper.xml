@@ -67,6 +67,78 @@
         )
     </insert>
 
+    <insert id="insertSkillTrigger" parameterType="com.ras.dao.SkillTriggerDao" useGeneratedKeys="true" keyProperty="id">
+        insert into skill_trigger /* SkillMapper.insertSkillTrigger :: 스킬 발동조건 등록 */
+        (
+              trigger_type_cd
+            , trigger_stat_id
+            , trigger_num
+            , trigger_percent_yn
+            , trigger_be_ab_yn
+            , trigger_first_do_yn
+            , skill_id
+        )
+        values (
+              #{triggerTypeCd}
+            , #{triggerStatId}
+            , #{triggerNum}
+            , #{triggerPercentYn}
+            , #{triggerBeAbYn}
+            , #{triggerFirstDoYn}
+            , #{skillId}
+        )
+    </insert>
+
+    <insert id="insertSkillEffect" parameterType="com.ras.dao.SkillEffectDao" useGeneratedKeys="true" keyProperty="id">
+        insert into skill_effect /* SkillMapper.insertSkillEffect :: 스킬 효과 등록 */
+        (
+              skill_id
+            , effect_cd
+            , effect_ui_cd
+            , effect_type
+            , effect_type_num
+            , effect_type_stat
+            , effect_type_skill_cd_1
+            , effect_type_skill_cd_2
+            , effect_type_calc_txt
+            , effect_start
+            , effect_maintain_time
+            , effect_apply
+            , target
+            , enemy_all_yn
+            , enemy_num
+            , enemy_targeting_type
+            , enemy_txt
+            , friend_all_yn
+            , friend_num
+            , friend_targeting_time
+            , friend_txt
+        )
+        values (
+             #{skillId}
+           , #{effectCd}
+           , #{effectUiCd}
+           , #{effectType}
+           , #{effectTypeNum}
+           , #{effectTypeStat}
+           , #{effectTypeSkillCd1}
+           , #{effectTypeSkillCd2}
+           , #{effectTypeCalcTxt}
+           , #{effectStart}
+           , #{effectMaintainTime}
+           , #{effectApply}
+           , #{target}
+           , #{enemyAllYn}
+           , #{enemyNum}
+           , #{enemyTargetingType}
+           , #{enemyTxt}
+           , #{friendAllYn}
+           , #{friendNum}
+           , #{friendTargetingTime}
+           , #{friendTxt}
+        )
+    </insert>
+
     <update id="updateSkill" parameterType="com.ras.dao.StatDao">
         update skill /* SkillMapper.updateSkill :: 스킬 수정 */
         set

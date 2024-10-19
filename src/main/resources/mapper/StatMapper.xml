@@ -24,7 +24,7 @@
         </where>
     </select>
 
-    <insert id="insertStat" parameterType="com.ras.dao.StatDao">
+    <insert id="insertStat" parameterType="com.ras.dao.StatDao" useGeneratedKeys="true" keyProperty="id">
         insert into stat /* StatMapper.insertStat :: 스탯 등록 */
         (
             name
