@@ -1,14 +1,12 @@
 package com.ras.service;
 
-import com.ras.dao.SkillDetailDao;
-import com.ras.dao.SkillEffectDao;
-import com.ras.dao.SkillListDao;
-import com.ras.dao.SkillTriggerDao;
+import com.ras.dao.*;
 import com.ras.data.CodeName;
 import com.ras.mapper.SkillMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,6 +129,47 @@ public class SkillService {
         returnDao.setSkillTriggerList(skillMapper.selectSkillTriggerList(inputParam));
 
         return returnDao;
+    }
+
+    /**
+     * 스킬 등록
+     * @param inputParam
+     */
+    @Transactional
+    public void registSkill(SkillDetailDao inputParam) throws Exception{
+        try {
+            // 스킬 기본정보 저장
+            skillMapper.insertSkill(inputParam);
+
+            // 스킬 발동조건 저장
+            for(SkillTriggerDao triggerDao : inputParam.getSkillTriggerList()) {
+                triggerDao.setSkillId(inputParam.getId());
+                skillMapper.insertSkillTrigger(triggerDao);
+            }
+
+            //스킬 효과 저장
+            for(SkillEffectDao effectDao : inputParam.getSkillEffectList()) {
+                effectDao.setSkillId(inputParam.getId());
+                skillMapper.insertSkillEffect(effectDao);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("에러입니다.");
+        }
+        return;
+    }
+
+    /**
+     * 스킬 수정
+     * @param inputParam
+     */
+    @Transactional
+    public void saveSkill(SkillDetailDao inputParam) throws Exception{ // 여기서부터 개발
+        try {
+            skillMapper.updateSkill(inputParam);
+        } catch (Exception e) {
+            throw new RuntimeException("에러입니다.");
+        }
+        return;
     }
 
 }

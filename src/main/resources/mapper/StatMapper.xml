@@ -27,8 +27,7 @@
     <insert id="insertStat" parameterType="com.ras.dao.StatDao">
         insert into stat /* StatMapper.insertStat :: 스탯 등록 */
         (
-            id
-            , name
+            name
             , txt
             , show_yn
             , stat_type
@@ -41,8 +40,7 @@
             , calc_txt
         )
         values (
-            #{id}
-            , #{name}
+            #{name}
             , #{txt}
             , #{showYn}
             , #{statType}
@@ -57,7 +55,7 @@
     </insert>
 
     <update id="updateStat" parameterType="com.ras.dao.StatDao">
-        update stat
+        update stat /* StatMapper.updateStat :: 스탯 수정 */
         set
             name = #{name}
           , txt = #{txt}

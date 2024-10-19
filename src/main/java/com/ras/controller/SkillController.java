@@ -49,15 +49,15 @@ public class SkillController {
 
     @Operation(summary = "스킬 등록", description = "스킬 등록", tags = {"Skill"})
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
-    public void registSkill(@RequestBody SkillDao stat) throws Exception{
-//        statService.registSkill(stat);
+    public void registSkill(@RequestBody SkillDetailDao skill) throws Exception{
+        skillService.registSkill(skill);
         return;
     }
 
     @Operation(summary = "스킬 수정(id로 참조)", description = "스킬 수정(id로 참조)", tags = {"Skill"})
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void saveSkill(@RequestBody SkillDao stat) throws Exception{
-//        statService.saveSkill(stat);
+    public void saveSkill(@RequestBody SkillDetailDao skill) throws Exception{
+        skillService.saveSkill(skill);
         return;
     }
 }

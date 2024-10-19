@@ -1,9 +1,6 @@
 package com.ras.mapper;
 
-import com.ras.dao.SkillDetailDao;
-import com.ras.dao.SkillEffectDao;
-import com.ras.dao.SkillListDao;
-import com.ras.dao.SkillTriggerDao;
+import com.ras.dao.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -29,4 +26,25 @@ public interface SkillMapper {
      * 스킬 발동조건 리스트 조회
      */
     List<SkillTriggerDao> selectSkillTriggerList(SkillListDao param);
+
+    /**
+     * 스킬 등록
+     */
+    void insertSkill(SkillDetailDao param);
+
+    /**
+     * 스킬 발동조건 등록
+     */
+    void insertSkillTrigger(SkillTriggerDao param);
+
+    /**
+     * 스킬 효과 등록
+     */
+    void insertSkillEffect(SkillEffectDao param);
+
+    /**
+     * 스킬 수정
+     */
+    void updateSkill(SkillDetailDao param);
+
 }

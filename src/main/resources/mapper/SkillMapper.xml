@@ -52,4 +52,27 @@
             st.skill_id = #{id}
         </where>
     </select>
+
+    <insert id="insertSkill" parameterType="com.ras.dao.SkillDetailDao" useGeneratedKeys="true" keyProperty="id">
+        insert into skill /* SkillMapper.insertSkill :: 스킬 등록 */
+        (
+              name
+            , img
+            , txt
+        )
+        values (
+             #{name}
+           , #{img}
+           , #{txt}
+        )
+    </insert>
+
+    <update id="updateSkill" parameterType="com.ras.dao.StatDao">
+        update skill /* SkillMapper.updateSkill :: 스킬 수정 */
+        set
+            name = #{name}
+          , img = #{img}
+          , txt = #{txt}
+        where id = #{id}
+    </update>
 </mapper>
