@@ -166,6 +166,28 @@ public class SkillService {
     public void saveSkill(SkillDetailDao inputParam) throws Exception{ // 여기서부터 개발
         try {
             skillMapper.updateSkill(inputParam);
+
+            // 스킬 발동조건 저장
+            for(SkillTriggerDao triggerDao : inputParam.getSkillTriggerList()) {
+                if(triggerDao.getId() != null) {
+                    skillMapper.updateSkillTrigger(triggerDao);
+                } else {
+                    // 신규 insert
+                    triggerDao.setSkillId(inputParam.getId());
+                    skillMapper.insertSkillTrigger(triggerDao);
+                }
+            }
+
+            //스킬 효과 저장
+            for(SkillEffectDao effectDao : inputParam.getSkillEffectList()) {
+                if(effectDao.getId() != null) {
+                    skillMapper.updateSkillEffect(effectDao);
+                } else {
+                    // 신규 insert
+                    effectDao.setSkillId(inputParam.getId());
+                    skillMapper.insertSkillEffect(effectDao);
+                }
+            }
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

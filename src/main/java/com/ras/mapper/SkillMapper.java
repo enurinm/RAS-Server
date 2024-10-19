@@ -47,4 +47,14 @@ public interface SkillMapper {
      */
     void updateSkill(SkillDetailDao param);
 
+    /**
+     * 스킬 발동조건 등록
+     */
+    void updateSkillTrigger(SkillTriggerDao param);
+
+    /**
+     * 스킬 효과 등록
+     */
+    void updateSkillEffect(SkillEffectDao param);
+
 }

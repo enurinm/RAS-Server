@@ -53,4 +53,11 @@ public class SkillEffect {
      */
     private Integer friendTargetingTime;
     private String friendTxt;
+
+    /**
+     * 사용여부
+     * 0: N
+     * 1: Y (defalt)
+     */
+    private Integer useYn;
 }

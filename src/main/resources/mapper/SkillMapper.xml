@@ -34,6 +34,7 @@
         from skill_effect se
         <where>
             se.skill_id = #{id}
+            and se.use_yn = 1
         </where>
     </select>
 
@@ -50,6 +51,7 @@
         from skill_trigger st
         <where>
             st.skill_id = #{id}
+            and st.use_yn = 1
         </where>
     </select>
 
@@ -77,6 +79,7 @@
             , trigger_be_ab_yn
             , trigger_first_do_yn
             , skill_id
+            , use_yn
         )
         values (
               #{triggerTypeCd}
@@ -86,6 +89,7 @@
             , #{triggerBeAbYn}
             , #{triggerFirstDoYn}
             , #{skillId}
+            , 1
         )
     </insert>
 
@@ -113,6 +117,7 @@
             , friend_num
             , friend_targeting_time
             , friend_txt
+            , use_yn
         )
         values (
              #{skillId}
@@ -136,15 +141,58 @@
            , #{friendNum}
            , #{friendTargetingTime}
            , #{friendTxt}
+           , 1
         )
     </insert>
 
-    <update id="updateSkill" parameterType="com.ras.dao.StatDao">
+    <update id="updateSkill" parameterType="com.ras.dao.SkillDetailDao">
         update skill /* SkillMapper.updateSkill :: 스킬 수정 */
         set
             name = #{name}
           , img = #{img}
           , txt = #{txt}
+        where id = #{id}
+    </update>
+
+    <update id="updateSkillTrigger" parameterType="com.ras.dao.SkillTriggerDao">
+        update skill_trigger /* SkillMapper.updateSkillTrigger :: 스킬 발동조건 수정 */
+        set
+            trigger_type_cd = #{triggerTypeCd}
+          , trigger_stat_id = #{triggerStatId}
+          , trigger_num = #{triggerNum}
+          , trigger_percent_yn = #{triggerPercentYn}
+          , trigger_be_ab_yn = #{triggerBeAbYn}
+          , trigger_first_do_yn = #{triggerFirstDoYn}
+          , skill_id = #{skillId}
+          , use_yn = #{useYn}
+        where id = #{id}
+    </update>
+
+    <update id="updateSkillEffect" parameterType="com.ras.dao.SkillEffectDao">
+        update skill_effect /* SkillMapper.updateSkillEffect :: 스킬 효과 수정 */
+        set
+            skill_id = #{skillId}
+          , effect_cd = #{effectCd}
+          , effect_ui_cd = #{effectUiCd}
+          , effect_type = #{effectType}
+          , effect_type_num = #{effectTypeNum}
+          , effect_type_stat = #{effectTypeStat}
+          , effect_type_skill_cd_1 = #{effectTypeSkillCd1}
+          , effect_type_skill_cd_2 = #{effectTypeSkillCd2}
+          , effect_type_calc_txt = #{effectTypeCalcTxt}
+          , effect_start = #{effectStart}
+          , effect_maintain_time = #{effectMaintainTime}
+          , effect_apply = #{effectApply}
+          , target = #{target}
+          , enemy_all_yn = #{enemyAllYn}
+          , enemy_num = #{enemyNum}
+          , enemy_targeting_type = #{enemyTargetingType}
+          , enemy_txt = #{enemyTxt}
+          , friend_all_yn = #{friendAllYn}
+          , friend_num = #{friendNum}
+          , friend_targeting_time = #{friendTargetingTime}
+          , friend_txt = #{friendTxt}
+          , use_yn = #{useYn}
         where id = #{id}
     </update>
 </mapper>
