@@ -9,4 +9,5 @@ import lombok.Setter;
 @Setter
 public class StatDao extends Stat {
     private String baseStatName;
+    private SearchWordDao searchWord;
 }

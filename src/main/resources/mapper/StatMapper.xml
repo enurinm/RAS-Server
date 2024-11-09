@@ -11,7 +11,10 @@
                 stat_type = #{statType}
             </if>
             <if test="name != null">
-                and a.name like ('%'||#{name}||'%')
+            <![CDATA[
+                and a.name >= #{searchWord.startWord}
+                and a.name <= #{searchWord.endWord}
+            ]]>
             </if>
         </where>
     </select>
