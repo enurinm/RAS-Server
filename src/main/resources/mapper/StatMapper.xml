@@ -11,10 +11,15 @@
                 stat_type = #{statType}
             </if>
             <if test="name != null">
-            <![CDATA[
-                and a.name >= #{searchWord.startWord}
-                and a.name <= #{searchWord.endWord}
-            ]]>
+                and (
+                <![CDATA[(
+                    /* 초성검색 */
+                    a.name >= #{searchWord.startWord}
+                    and a.name <= #{searchWord.endWord}
+                )]]>
+                    /* 일반 like 검색 */
+                    or a.name like ('%'||#{name}||'%')
+                )
             </if>
         </where>
     </select>
