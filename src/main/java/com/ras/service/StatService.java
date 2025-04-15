@@ -22,7 +22,7 @@ public class StatService {
      * @param inputParam
      * @return
      */
-    public List<StatDao> searchStatList(StatDao inputParam) throws Exception{
+    public List<StatDao> searchStatList(StatDao inputParam) throws Exception {
         inputParam.setSearchWord(searchUtil.setSearchWord(inputParam.getName()));
         List<StatDao> returnDao = statMapper.selectStatList(inputParam);
         return returnDao;
@@ -33,7 +33,7 @@ public class StatService {
      * @param inputParam
      * @return
      */
-    public StatDao searchStat(StatDao inputParam) throws Exception{
+    public StatDao searchStat(StatDao inputParam) throws Exception {
         StatDao returnDao = statMapper.selectStat(inputParam);
         return returnDao;
     }
@@ -43,7 +43,7 @@ public class StatService {
      * @param inputParam
      */
     @Transactional
-    public void registStat(StatDao inputParam) throws Exception{
+    public void registStat(StatDao inputParam) throws Exception {
         try {
             statMapper.insertStat(inputParam);
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class StatService {
      * @param inputParam
      */
     @Transactional
-    public void saveStat(StatDao inputParam) throws Exception{ // 여기서부터 개발
+    public void saveStat(StatDao inputParam) throws Exception { // 여기서부터 개발
         try {
             statMapper.updateStat(inputParam);
         } catch (Exception e) {

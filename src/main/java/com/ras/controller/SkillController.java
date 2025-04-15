@@ -27,7 +27,7 @@ public class SkillController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<SkillListDao> searchSkillList(
             @Parameter(name="effectCd" ,description = "스킬 종류")
-            @RequestParam(required = false) Integer effectCd) throws Exception{
+            @RequestParam(required = false) Integer effectCd) throws Exception {
         SkillListDao inputParam = new SkillListDao();
         inputParam.setEffectCd(effectCd);
 
@@ -39,7 +39,7 @@ public class SkillController {
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public SkillDetailDao searchSkill(
             @Parameter(name="id" ,description = "스킬 id")
-            @RequestParam(required = true) Integer id) throws Exception{
+            @RequestParam(required = true) Integer id) throws Exception {
         SkillListDao inputParam = new SkillListDao();
         inputParam.setId(id);
 
@@ -49,14 +49,14 @@ public class SkillController {
 
     @Operation(summary = "스킬 등록", description = "스킬 등록", tags = {"Skill"})
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
-    public void registSkill(@RequestBody SkillDetailDao skill) throws Exception{
+    public void registSkill(@RequestBody SkillDetailDao skill) throws Exception {
         skillService.registSkill(skill);
         return;
     }
 
     @Operation(summary = "스킬 수정(id로 참조)", description = "스킬 수정(id로 참조)", tags = {"Skill"})
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void saveSkill(@RequestBody SkillDetailDao skill) throws Exception{
+    public void saveSkill(@RequestBody SkillDetailDao skill) throws Exception {
         skillService.saveSkill(skill);
         return;
     }

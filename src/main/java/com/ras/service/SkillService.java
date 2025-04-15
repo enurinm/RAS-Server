@@ -23,7 +23,7 @@ public class SkillService {
      * @return
      * @throws Exception
      */
-    public List<SkillListDao> searchSkillList(SkillListDao inputParam) throws Exception{
+    public List<SkillListDao> searchSkillList(SkillListDao inputParam) throws Exception {
         List<SkillListDao> returnDao = skillMapper.selectSkillList(inputParam);
 
         for(SkillListDao item : returnDao) {
@@ -122,7 +122,7 @@ public class SkillService {
      * @return
      * @throws Exception
      */
-    public SkillDetailDao searchSkill(SkillListDao inputParam) throws Exception{
+    public SkillDetailDao searchSkill(SkillListDao inputParam) throws Exception {
         SkillDetailDao returnDao = skillMapper.selectSkill(inputParam);
 
         returnDao.setSkillEffectList(skillMapper.selectSkillEffectList(inputParam));
@@ -163,7 +163,7 @@ public class SkillService {
      * @param inputParam
      */
     @Transactional
-    public void saveSkill(SkillDetailDao inputParam) throws Exception{ // 여기서부터 개발
+    public void saveSkill(SkillDetailDao inputParam) throws Exception { // 여기서부터 개발
         try {
             skillMapper.updateSkill(inputParam);
 

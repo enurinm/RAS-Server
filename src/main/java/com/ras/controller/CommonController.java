@@ -30,7 +30,7 @@ public class CommonController {
     @RequestMapping(value = "/code", method = RequestMethod.GET)
     public List<CodeDao> searchCommonCodeList(
             @Parameter(name="type" ,description = "코드 분류(1:회원 권한 코드/2:레이드 상태 코드/3:스킬 종류 코드/4:스탯 종류 코드)")
-            @RequestParam(required = true) Integer type) throws Exception{
+            @RequestParam(required = true) Integer type) throws Exception {
         CodeDao inputParam = new CodeDao();
         inputParam.setType(type);
 
