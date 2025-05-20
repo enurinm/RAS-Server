@@ -195,4 +195,16 @@
           , use_yn = #{useYn}
         where id = #{id}
     </update>
+
+    <delete id="deleteSkillTrigger">
+        delete /* SkillMapper.deleteSkillTrigger :: 스킬 발동조건 삭제 */
+        from skill_trigger
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteSkillEffect">
+        delete /* SkillMapper.deleteSkillEffect :: 스킬 효과 수정 */
+        from skill_effect
+        where id = #{id}
+    </delete>
 </mapper>

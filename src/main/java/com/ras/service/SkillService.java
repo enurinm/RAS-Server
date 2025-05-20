@@ -141,16 +141,20 @@ public class SkillService {
             // 스킬 기본정보 저장
             skillMapper.insertSkill(inputParam);
 
-            // 스킬 발동조건 저장
-            for(SkillTriggerDao triggerDao : inputParam.getSkillTriggerList()) {
-                triggerDao.setSkillId(inputParam.getId());
-                skillMapper.insertSkillTrigger(triggerDao);
+            if(!inputParam.getSkillTriggerList().isEmpty()) {
+                // 스킬 발동조건 저장
+                for(SkillTriggerDao triggerDao : inputParam.getSkillTriggerList()) {
+                    triggerDao.setSkillId(inputParam.getId());
+                    skillMapper.insertSkillTrigger(triggerDao);
+                }
             }
 
-            //스킬 효과 저장
-            for(SkillEffectDao effectDao : inputParam.getSkillEffectList()) {
-                effectDao.setSkillId(inputParam.getId());
-                skillMapper.insertSkillEffect(effectDao);
+            if(!inputParam.getSkillEffectList().isEmpty()) {
+                //스킬 효과 저장
+                for(SkillEffectDao effectDao : inputParam.getSkillEffectList()) {
+                    effectDao.setSkillId(inputParam.getId());
+                    skillMapper.insertSkillEffect(effectDao);
+                }
             }
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
@@ -166,6 +170,12 @@ public class SkillService {
     public void saveSkill(SkillDetailDao inputParam) throws Exception { // 여기서부터 개발
         try {
             skillMapper.updateSkill(inputParam);
+
+            /** TODO: 조건 insert, update 외에 delete되는 조건이 있을 경우 delete 실행
+             * 일괄 delete 후 insert 방식 고려 필요
+             * 스킬 수정하는 건 관리자 뿐이라 사실상 트래픽이 적고...
+             * 보통 스킬 수정은 레이드 도중이 아니라 레이드 전후로 하니까 DB 꼬일 일도 딱히 없을듯...
+             */
 
             // 스킬 발동조건 저장
             for(SkillTriggerDao triggerDao : inputParam.getSkillTriggerList()) {
