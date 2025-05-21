@@ -59,7 +59,7 @@ public class SkillService {
             }
 
             // 발동조건 세팅
-            if(triggerVal.length() > 0) {
+            if(!triggerVal.isEmpty()) {
                 trigger.setKey("발동");
                 trigger.setValue(triggerVal);
                 triggerEffectList.add(trigger);
@@ -176,6 +176,10 @@ public class SkillService {
              * 스킬 수정하는 건 관리자 뿐이라 사실상 트래픽이 적고...
              * 보통 스킬 수정은 레이드 도중이 아니라 레이드 전후로 하니까 DB 꼬일 일도 딱히 없을듯...
              */
+
+            // 스킬 발동조건 삭제
+//            skillMapper.deleteSkillEffectBySkillId(inputParam);
+//            skillMapper.deleteSkillTriggerBySkillId(inputParam);
 
             // 스킬 발동조건 저장
             for(SkillTriggerDao triggerDao : inputParam.getSkillTriggerList()) {

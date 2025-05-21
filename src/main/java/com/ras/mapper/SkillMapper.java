@@ -57,4 +57,24 @@ public interface SkillMapper {
      */
     void updateSkillEffect(SkillEffectDao param);
 
+    /**
+     * 스킬 발동조건 삭제
+     */
+    void deleteSkillTrigger(SkillTriggerDao param);
+
+    /**
+     * 스킬 발동조건 삭제
+     */
+    void deleteSkillTriggerBySkillId(SkillDetailDao param);
+
+    /**
+     * 스킬 효과 삭제
+     */
+    void deleteSkillEffect(SkillEffectDao param);
+
+    /**
+     * 스킬 효과 삭제
+     */
+    void deleteSkillEffectBySkillId(SkillDetailDao param);
+
 }

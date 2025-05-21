@@ -196,15 +196,27 @@
         where id = #{id}
     </update>
 
-    <delete id="deleteSkillTrigger">
+    <delete id="deleteSkillTrigger" parameterType="com.ras.dao.SkillTriggerDao">
         delete /* SkillMapper.deleteSkillTrigger :: 스킬 발동조건 삭제 */
         from skill_trigger
         where id = #{id}
     </delete>
 
-    <delete id="deleteSkillEffect">
+    <delete id="deleteSkillTriggerBySkillId" parameterType="com.ras.dao.SkillDetailDao">
+        delete /* SkillMapper.deleteSkillTriggerBySkillId :: 스킬 발동조건 삭제 */
+        from skill_trigger
+        where skill_id = #{id}
+    </delete>
+
+    <delete id="deleteSkillEffect" parameterType="com.ras.dao.SkillEffectDao">
         delete /* SkillMapper.deleteSkillEffect :: 스킬 효과 수정 */
         from skill_effect
         where id = #{id}
+    </delete>
+
+    <delete id="deleteSkillEffectBySkillId" parameterType="com.ras.dao.SkillDetailDao">
+        delete /* SkillMapper.deleteSkillEffectBySkillId :: 스킬 효과 수정 */
+        from skill_effect
+        where skill_id = #{id}
     </delete>
 </mapper>
